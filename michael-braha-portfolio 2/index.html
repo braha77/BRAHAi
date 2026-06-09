@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Michael Braha — I make things</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css" />
+<script src="image-slot.js"></script>
+</head>
+<body>
+<div class="grain"></div>
+<div class="blueprint" id="blueprint" aria-hidden="true"></div>
+
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+<rect width="400" height="400" fill="#14110f"/>
+<rect x="158" y="158" width="84" height="84" rx="6" fill="#c9612b" transform="rotate(45 200 200)"/>
+<text x="200" y="216" font-family="Helvetica,Arial,sans-serif" font-size="46" font-weight="800" fill="#f2ece1" text-anchor="middle">MB</text>
+</svg>
+</template>
+
+<!-- ================= TWEAKS PANEL ================= -->
+<div id="tweaks" aria-hidden="true">
+  <div class="tk-head"><span class="tt">Tweaks</span><button class="x" id="tkClose" aria-label="Close">✕</button></div>
+  <div class="tk-body">
+    <div class="tk">
+      <div class="lab">Role line</div>
+      <input type="text" id="tkRole" />
+    </div>
+    <div class="tk">
+      <div class="lab">Accent</div>
+      <div class="swatches-row" id="tkAccent"></div>
+    </div>
+    <div class="tk">
+      <div class="lab">Hero headline</div>
+      <div class="seg" id="tkHero">
+        <button data-v="serif">Serif</button>
+        <button data-v="brutalist">Brutalist</button>
+      </div>
+    </div>
+    <div class="tk tog"><div class="lab" style="margin:0">Motion</div><div class="sw-t" id="tkMotion"></div></div>
+    <div class="tk tog"><div class="lab" style="margin:0">Paper grain</div><div class="sw-t" id="tkGrain"></div></div>
+  </div>
+</div>
+
+<header class="chrome" id="chrome">
+  <a class="brand" href="#top"><span class="gem"></span>Michael Braha</a>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top" data-screen-label="Hero">
+  <div class="lead-col">
+    <div class="kick reveal"><span class="ln"></span><span class="role-text">Creative · Builder · App Designer</span></div>
+    <h1 class="hname reveal d1"><span class="a">Michael</span><span class="b">Braha</span></h1>
+    <p class="hlede reveal d2">I make things. <em>Interactive instruments, real tools, and digital products</em> that live in the world and get used.</p>
+    <div class="hmeta reveal d3">
+      <div class="it">Based<b>New York</b></div>
+      <div class="it">Focus<b>Product · AI · Audio</b></div>
+      <div class="it">Status<b>Open to work</b></div>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="scrollcue">Scroll to enter<span class="dl"></span></div>
+    <div class="swatches">
+      <i style="background:var(--teal)"></i><i style="background:var(--gold)"></i>
+      <i style="background:var(--sage)"></i><i style="background:var(--slate)"></i>
+      <i style="background:var(--orange)"></i>
+    </div>
+  </div>
+  <div class="bp-mark m-circle" aria-hidden="true"><svg viewBox="0 0 170 110"><path d="M150 18 C120 2 40 0 18 35 C2 62 30 104 86 106 C150 108 172 60 150 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 5"/></svg></div>
+  <div class="bp-mark m-arrow" aria-hidden="true"><svg viewBox="0 0 120 60"><path d="M2 8 C40 4 70 30 96 50" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M96 50 L80 48 M96 50 L92 34" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></div>
+  <span class="bp-coord" style="top:13%;right:9vw">x:000 · y:000</span>
+  <span class="bp-coord" style="bottom:13%;right:9vw">fig. 01 — the canvas</span>
+</section>
+
+<!-- ================= MANIFESTO ================= -->
+<section class="manifesto" data-screen-label="Manifesto">
+  <div class="mf-head">
+    <span class="mf-idx reveal">(fig. 01b — who I am)</span>
+    <span class="mf-idx reveal">Real software · real hands · real problems</span>
+  </div>
+  <h2 class="mf-big reveal">I make<br>things<span class="o">.</span></h2>
+
+  <div class="mf-grid">
+    <div class="mf-copy reveal d1">
+      <p class="big-line">Michael Braha is a creative — musician, builder, and app designer.</p>
+      <p>I create digital products, real tools, and interactive instruments that live in the world and get used. <em>Software built with AI-native tools, put into real hands solving real problems.</em></p>
+      <p>My work spans from custom-built websites to consumer apps and AI automation for business — helping people and businesses move faster, build smarter, and integrate AI into how they work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MACBOOK PIN ================= -->
+<section class="pin" id="work" data-screen-label="BRAHAi machine">
+  <div class="pin-stage" id="pinStage">
+    <div class="stage-cap" id="cap">fig. 02 — open the machine</div>
+    <div class="laptop" id="laptop">
+      <div class="lid">
+        <div class="screen">
+          <div class="notch"><i></i></div>
+          <div class="brahai-screen">
+            <div class="bp-lush" aria-hidden="true"></div>
+            <div class="brahai">
+              <span class="bw">BRAHA</span><span class="bi"><span class="stem">&#x131;</span><span class="bdot"></span></span>
+            </div>
+            <div class="bsub">creative · builder · app designer</div>
+          </div>
+          <div class="bezel"></div>
+          <div class="glare"></div>
+        </div>
+      </div>
+      <div class="kbd-wrap">
+        <div class="kbd">
+          <div class="keys" id="keys"></div>
+          <div class="trackpad"></div>
+        </div>
+      </div>
+    </div>
+    <div class="idot-bloom" id="idotBloom" aria-hidden="true"></div>
+    <div class="bloom-i" id="bloomI" aria-hidden="true"><span class="bword">BRAH</span><span class="bA">A</span><span class="bi"><span class="istem">&#x131;</span><span class="idot"></span></span></div>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<div class="dark-zone">
+<div class="dark-grid" aria-hidden="true">
+  <span class="dg-coord tl">wireframe — 0,0</span>
+  <span class="dg-coord tr">prototype → product</span>
+</div>
+<section class="work" id="selected" data-screen-label="Selected Work">
+  <div class="work-head">
+    <h2 class="reveal">Selected<br>Work</h2>
+    <div class="meta reveal d1">19 Projects · 2025—26<br>Four lanes · swipe each →<br>Branded · Consumer · Creative · AI</div>
+  </div>
+  <div id="lanes"></div>
+
+  <!-- statement -->
+  <div class="statement reveal">
+    <span class="st-idx">(Approach)</span>
+    <div class="q">Built fast.<br>Put into<br>real hands.</div>
+  </div>
+</section>
+
+<!-- ================= CAPABILITIES ================= -->
+<section class="caps" id="capabilities" data-screen-label="Capabilities">
+  <div class="caps-top">
+    <h2 class="reveal">Work<br>with me</h2>
+    <p class="reveal d1">Beyond the portfolio — I build with people, and integrate AI into how they actually work.</p>
+  </div>
+  <div class="cap-row reveal">
+    <div class="n"><span class="d" style="background:var(--sage)"></span>01</div>
+    <h3>Interactive<br>Instruments</h3>
+    <p>Tools and toys that make sound feel alive — designed, built, and shipped end to end.</p>
+  </div>
+  <div class="cap-row reveal d1">
+    <div class="n"><span class="d" style="background:var(--teal)"></span>02</div>
+    <h3>Digital<br>Products</h3>
+    <p>Real software for real users — from first sketch to a thing in the App Store and on the web.</p>
+  </div>
+  <div class="cap-row reveal d2">
+    <div class="n"><span class="d" style="background:var(--orange)"></span>03</div>
+    <h3>AI<br>Automation</h3>
+    <p>Helping people and businesses move faster and build smarter by weaving AI into their workflows.</p>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact" data-screen-label="Contact">
+  <h2 class="ct-big reveal">Let's make<br>something<a href="mailto:brahamail7791@gmail.com"><span class="arrow">↗</span></a></h2>
+  <div class="ct-row reveal d1">
+    <div class="ct-links">
+      <div class="grp">
+        <div class="l">Direct</div>
+        <a href="mailto:brahamail7791@gmail.com">Email</a>
+        <a href="#">Book a call</a>
+      </div>
+      <div class="grp">
+        <div class="l">Elsewhere</div>
+        <a href="#">Instagram</a>
+        <a href="#">X / Twitter</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+    <div class="ct-sign">Michael Braha © 2026<br><span class="role-text">Creative · Builder · App Designer</span><br>I make things.</div>
+  </div>
+</section>
+</div><!-- /dark-zone -->
+
+<script>
+/* ---- selected work (filterable) ---- */
+(function(){
+  const P=[
+    {n:'Drift',c:'creative',y:'2025',col:'s-teal',dev:'phone',ph:'screen recording',d:'An interactive instrument — gestures become evolving sound.'},
+    {n:'Choppr',c:'creative',y:'2025',col:'s-teal',dev:'phone',vid:'assets/choppr.mp4',poster:'assets/choppr-poster.png',noisland:true,d:'A playful sampler for chopping and rearranging audio.'},
+    {n:'Margin Error',c:'creative',y:'2025',col:'s-teal',dev:'phone',img:'assets/shot-margin-error.png',noisland:true,d:'A generative toy built to be played with, not configured.'},
+    {n:'Lufa',c:'branded',y:'2025',col:'s-gold',dev:'site',img:'assets/shot-lufa.png',d:'Brand identity and landing experience — clean, confident, fast.'},
+    {n:'Baby Steps',c:'branded',y:'2025',col:'s-gold',dev:'site',img:'assets/shot-baby-steps.png',d:'Brand site for a baby-essentials subscription box.'},
+    {n:'Echo Flow',c:'branded',y:'2025',col:'s-gold',dev:'site',img:'assets/shot-echo-flow.png',d:'Waitlist flow and brand site for a music product.'},
+    {n:'Rewardly',c:'branded',y:'2025',col:'s-gold',dev:'site',img:'assets/shot-rewardly.png',d:'Marketing site for a rewards & perks platform.'},
+    {n:'Snack Labs',c:'branded',y:'2025',col:'s-gold',dev:'site',img:'assets/shot-snack-labs.png',d:'Brand site for a better-for-you snack venture.'},
+    {n:'Sound Machine',c:'consumer',y:'2025',col:'s-slate',dev:'phone',img:'assets/shot-sound-machine.png',noisland:true,d:'A calm sound machine for babies and tired parents.'},
+    {n:'Fitness Timer',c:'consumer',y:'2025',col:'s-rose',dev:'phone',img:'assets/shot-fitness-timer.png',noisland:true,bg:'#001409',d:'A focused interval timer for training sessions.'},
+    {n:'Layer Report',c:'consumer',y:'2025',col:'s-teal',dev:'phone',img:'assets/shot-layer-report.png',noisland:true,d:'A focused reporting tool that turns data into clarity.'},
+    {n:'Rides',c:'consumer',y:'2025',col:'s-sage',dev:'phone',img:'assets/shot-rides.png',noisland:true,d:'Coordinating community rides, simply and reliably.'},
+    {n:'Nature Calls',c:'consumer',y:'2025',col:'s-gold',dev:'phone',img:'assets/shot-nature-calls.png',noisland:true,d:'A small, delightful everyday utility.'},
+    {n:'RonLog',c:'consumer',y:'2025',col:'s-slate',dev:'phone',img:'assets/shot-ronlog.png',noisland:true,bg:'#f2fbff',d:'Baby monitoring and logging, pared back to essentials.'},
+    {n:'luum',c:'consumer',y:'2025',col:'s-teal',dev:'tablet',img:'assets/shot-luum.png',bg:'#ebe5d8',d:'A clean, focused reading experience for long-form.'},
+    {n:'Product Pipeline',c:'ai',y:'2026',col:'s-orange',dev:'tool',img:'assets/shot-product-pipeline.png',d:'AI-assisted product workflow and WIP tracking.'},
+    {n:'Margin Mastr',c:'ai',y:'2026',col:'s-orange',dev:'tool',img:'assets/shot-margin-mastr.png',d:'Custom AI tooling for margins and pricing.'},
+    {n:'PDF Editor',c:'ai',y:'2026',col:'s-orange',dev:'tool',img:'assets/shot-pdf-editor.png',d:'A fast, AI-native way to edit and assemble PDFs.'},
+    {n:'Video Hosting',c:'ai',y:'2025',col:'s-orange',dev:'tool',img:'assets/shot-video-hosting.png',d:'A simple, no-friction way to host and share video.'}
+  ];
+  const WIDE=new Set(['Lufa','Baby Steps','Echo Flow','Rewardly','Snack Labs','Product Pipeline','Margin Mastr','PDF Editor','Video Hosting','luum']);
+  const LABEL={'Rides':'Community Ride App'};
+  const CATS=[
+    {k:'branded', t:'Branded Sites',     dot:'var(--gold)'},
+    {k:'consumer',t:'Consumer Apps',     dot:'var(--slate)'},
+    {k:'creative',t:'Creative Apps',     dot:'var(--teal)'},
+    {k:'ai',      t:'AI Business Tools', dot:'var(--orange)'}
+  ];
+  const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-');
+  const lanes=document.getElementById('lanes');
+  let html='', fig=3, gN=0;
+  CATS.forEach(cat=>{
+    const items=P.filter(p=>p.c===cat.k);
+    let cards='';
+    items.forEach(p=>{
+      gN++;
+      const form=WIDE.has(p.n)?'wide':'mobile';
+      const dev=p.dev||'site';
+      const name=LABEL[p.n]||p.n;
+      const ph=p.ph||'Coming soon';
+      const fit='cover';
+      const bg=p.bg?' style="background:'+p.bg+'"':'';
+      const isVid = p.n==='Drift' || p.vid;
+      const baseImg = p.n==='Drift' ? 'assets/drift.gif' : (p.poster||'');
+      let media = p.img
+        ? '<img class="shot" src="'+p.img+'" alt="'+name+' — app screen" loading="lazy" decoding="async">'
+        : isVid
+        ? '<div class="driftmedia" data-vsrc="'+(p.vid||'')+'"'+(p.trim?' data-trim':'')+'>'
+            +'<video class="dvid" muted loop playsinline preload="'+(p.vid?'auto':'metadata')+'"'+(p.poster?' poster="'+p.poster+'"':'')+'></video>'
+            +'<img class="dgif" src="'+baseImg+'" alt="'+name+' — live demo" loading="lazy" decoding="async">'
+            +'<span class="dfade"></span>'
+            +'<button class="dvol" type="button" aria-label="Play sound" hidden>'
+              +'<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><line class="slash" x1="17" y1="9" x2="22" y2="15"/><line class="slash" x1="22" y1="9" x2="17" y2="15"/></svg>'
+            +'</button>'
+          +'</div>'
+        : '<image-slot id="shot-'+slug(p.n)+'" class="slot" shape="rect" fit="'+fit+'" placeholder="'+ph+'"></image-slot>';
+      const island=p.noisland?'':'<span class="island"></span>';
+      // image-slot drag-drop only works inside the editor (window.omelette); on the
+      // deployed site that empty "Drop an image" box is unusable, so swap in a
+      // styled "Coming soon" placeholder when the editor bridge is absent.
+      if(!(window.omelette && window.omelette.writeFile) && !p.img && !p.vid && p.n!=='Drift'){
+        media='<div class="phslot"><span class="phlabel">'+ph+'</span></div>';
+      }
+      let visual, frameCls;
+      if(dev==='phone'){
+        visual='<div class="phone"><div class="pscreen '+p.col+'"'+bg+'>'+media+'</div>'+island+'<span class="pgloss"></span></div>';
+        frameCls='frame shell';
+      } else if(dev==='tablet'){
+        visual='<div class="tablet"><div class="tscreen '+p.col+'"'+bg+'>'+media+'</div><span class="tcam"></span><span class="pgloss"></span></div>';
+        frameCls='frame shell';
+      } else {
+        visual=media;
+        frameCls='frame '+p.col;
+      }
+      cards+='<article class="pcard '+form+(isVid?' isdrift':'')+' dev-'+dev+'">'
+        +'<div class="'+frameCls+'">'
+        +visual
+        +'<span class="num">'+String(gN).padStart(2,'0')+'</span>'
+        +'</div>'
+        +'<div class="pmeta"><h4>'+name+'</h4><span class="yr">'+p.y+'</span></div>'
+        +'<p class="pdesc">'+p.d+'</p>'
+        +'</article>';
+    });
+    const figLbl='fig. '+String(fig++).padStart(2,'0');
+    html+='<section class="lane reveal" data-cat="'+cat.k+'">'
+      +'<div class="lane-head">'
+      +'<div class="lh-l"><span class="lfig">'+figLbl+'</span><span class="ldot" style="background:'+cat.dot+'"></span><h3>'+cat.t+'</h3></div>'
+      +'<div class="lh-r"><span class="lcount">'+String(items.length).padStart(2,'0')+' projects</span><span class="lhint">Drag / scroll →</span></div>'
+      +'</div>'
+      +'<div class="lane-track" tabindex="0">'+cards+'</div>'
+      +'</section>';
+  });
+  lanes.innerHTML=html;
+  /* drag-to-scroll on each lane */
+  document.querySelectorAll('.lane-track').forEach(tr=>{
+    let down=false,sx=0,sl=0,moved=false;
+    tr.addEventListener('pointerdown',e=>{if(e.target.closest('image-slot'))return;down=true;moved=false;sx=e.clientX;sl=tr.scrollLeft;try{tr.setPointerCapture(e.pointerId);}catch(_){}tr.classList.add('drag');});
+    tr.addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-sx;if(Math.abs(dx)>4)moved=true;tr.scrollLeft=sl-dx;});
+    const up=()=>{down=false;tr.classList.remove('drag');};
+    tr.addEventListener('pointerup',up);tr.addEventListener('pointercancel',up);
+    tr.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation();}},true);
+  });
+
+  /* ---- live-demo media: poster/GIF base + looping <video> (sound toggle; optional trim+fade) ---- */
+  (function(){
+    document.querySelectorAll('.driftmedia').forEach(box=>{
+      const v=box.querySelector('.dvid'), vol=box.querySelector('.dvol');
+      const src=box.getAttribute('data-vsrc');
+      if(!src){ return; }                      // no decodable clip → poster/GIF loops on its own
+      const trim=box.hasAttribute('data-trim');
+      const IN=6, OUT=30, FADE=1.1;            // trim window + crossfade seconds
+      let ready=false;
+      v.addEventListener('loadeddata',()=>{
+        ready=true; box.classList.add('hasvid');
+        if(trim){ try{ v.currentTime=IN; }catch(e){} } else { v.style.opacity=1; }
+        v.play().catch(()=>{});
+        if(vol) vol.hidden=false;
+      });
+      v.addEventListener('error',()=>{ box.classList.remove('hasvid'); }); // fall back to poster
+      if(trim){
+        v.addEventListener('timeupdate',()=>{
+          if(!ready) return;
+          const t=v.currentTime;
+          if(t>=OUT){ v.currentTime=IN; return; }
+          const up=Math.min(1,(t-IN)/FADE);
+          const down=Math.min(1,(OUT-t)/FADE);
+          v.style.opacity=Math.max(0,Math.min(up,down)).toFixed(3);
+        });
+      }
+      if(vol){
+        vol.addEventListener('click',(e)=>{
+          e.stopPropagation();
+          v.muted=!v.muted;
+          vol.classList.toggle('on',!v.muted);
+          vol.setAttribute('aria-label',v.muted?'Play sound':'Mute');
+          if(!v.muted) v.play().catch(()=>{});
+        });
+      }
+      /* preview/bundle servers may not honor Range requests, which breaks a direct
+         <video src>; loading through a Blob URL decodes reliably (also for data: URIs). */
+      fetch(src).then(r=>r.blob()).then(b=>{ v.src=URL.createObjectURL(b); })
+        .catch(()=>{ v.src=src; });
+    });
+  })();
+})();
+
+/* ---- reveal observer ---- */
+(function(){
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.16,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+
+/* ---- MacBook keyboard (generated, real QWERTY) ---- */
+(function(){
+  const keys=document.getElementById('keys'); if(!keys) return;
+  // [label, flexUnits, extraClass]
+  const U=1, esc='esc';
+  const rows=[
+    // function row
+    [['esc',1.4,'fnk'],['F1',1,'fnk'],['F2',1,'fnk'],['F3',1,'fnk'],['F4',1,'fnk'],['F5',1,'fnk'],['F6',1,'fnk'],['F7',1,'fnk'],['F8',1,'fnk'],['F9',1,'fnk'],['F10',1,'fnk'],['F11',1,'fnk'],['F12',1,'fnk'],['',1,'fnk']],
+    // number row
+    [['~',1],['1',1],['2',1],['3',1],['4',1],['5',1],['6',1],['7',1],['8',1],['9',1],['0',1],['–',1],['+',1],['delete',1.7,'wk']],
+    // qwerty
+    [['tab',1.7,'wk'],['Q',1],['W',1],['E',1],['R',1],['T',1],['Y',1],['U',1],['I',1],['O',1],['P',1],['{',1],['}',1],['|',1.3,'wk']],
+    // asdf
+    [['caps',2,'wk'],['A',1],['S',1],['D',1],['F',1],['G',1],['H',1],['J',1],['K',1],['L',1],[':',1],['"',1],['return',2,'wk']],
+    // zxcv
+    [['shift',2.4,'wk'],['Z',1],['X',1],['C',1],['V',1],['B',1],['N',1],['M',1],['<',1],['>',1],['?',1],['shift',2.4,'wk']],
+    // bottom
+    [['fn',1,'sm'],['ctrl',1,'sm'],['opt',1,'sm'],['cmd',1.4,'sm cmd'],['',6,'space'],['cmd',1.4,'sm cmd'],['opt',1,'sm'],['<',1,'arr'],['>',1,'arr']]
+  ];
+  let h='';
+  rows.forEach((row,ri)=>{
+    h+='<div class="krow'+(ri===0?' fn':'')+'">';
+    row.forEach(([label,units,cls])=>{
+      h+='<span class="key '+(cls||'')+'" style="flex:'+units+'"><span class="kc">'+label+'</span></span>';
+    });
+    h+='</div>';
+  });
+  keys.innerHTML=h;
+})();
+
+/* ---- laptop open + zoom + dive into the "i" + bloom to dark ---- */
+const pin=document.querySelector('.pin');
+const pinStage=document.querySelector('.pin-stage');
+const darkZone=document.querySelector('.dark-zone');
+const laptop=document.getElementById('laptop');
+const cap=document.getElementById('cap');
+const chrome=document.getElementById('chrome');
+const screenEl=laptop.querySelector('.screen');
+const bloom=document.getElementById('idotBloom');
+const dotEl=laptop.querySelector('.brahai .bdot');
+const bloomI=document.getElementById('bloomI');
+let tScale=1,cScale=1,tDy=0,cDy=0,tDark=0,cDark=0,tFade=0,cFade=0,tKrot=86,cKrot=86,tKop=1,cKop=1,tBloom=0,cBloom=0,first=true;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const easeIO=t=>t<0.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+const easeOut=t=>1-Math.pow(1-t,3);
+const easeIn=t=>t*t;
+const CREAM=[239,231,218], DARKC=[19,17,15];
+const mix=(t)=>'rgb('+CREAM.map((c,i)=>Math.round(lerp(c,DARKC[i],t))).join(',')+')';
+
+function measure(){
+  let el=screenEl,y=0;
+  while(el && el!==laptop){y+=el.offsetTop;el=el.offsetParent;}
+  const lapH=laptop.offsetHeight||1;
+  const sc=y+screenEl.offsetHeight/2;
+  laptop.style.transformOrigin='50% '+(sc/lapH*100).toFixed(2)+'%';
+  return {lapH,sc};
+}
+function compute(){
+  const vh=innerHeight,vw=innerWidth;
+  const m=measure();
+  const r=pin.getBoundingClientRect();
+  const total=pin.offsetHeight-vh;
+  const p=clamp((-r.top)/total,0,1);
+
+  /* keyboard tilts open early, then folds away as we zoom */
+  const op=clamp(p/0.16,0,1);
+  tKrot=lerp(86,57,easeOut(op));
+  const kFold=clamp((p-0.28)/0.16,0,1);
+  tKop=1-kFold;
+
+  /* screen scales to fill viewport */
+  const sw=screenEl.offsetWidth||vw*.5, sh=screenEl.offsetHeight||vw*.3;
+  const fill=Math.max(vw/sw,vh/sh)*1.02;
+  const zp=clamp((p-0.10)/0.50,0,1);
+  const eased=easeIO(zp);
+  tScale=lerp(1,fill,eased);
+  tDy=(m.lapH/2-m.sc)*eased;
+  tFade=clamp((zp-0.55)/0.4,0,1);
+
+  /* dive into the orange "i" dot — bloom floods outward */
+  const dp=clamp((p-0.60)/0.24,0,1);
+  tBloom=easeIn(dp)*52;
+
+  /* the i becomes Ai, then BRAH resolves into the signature */
+  const ip=clamp((p-0.79)/0.12,0,1);
+  bloomI.style.opacity=clamp(ip*1.8,0,1).toFixed(3);
+  bloomI.style.transform='translate(-50%,-50%) scale('+lerp(0.72,1,easeOut(ip)).toFixed(3)+')';
+  const wp=clamp((p-0.90)/0.1,0,1);
+  const bword=bloomI.querySelector('.bword');
+  if(bword){bword.style.opacity=wp.toFixed(3);bword.style.transform='translateX('+lerp(0.16,0,easeOut(wp)).toFixed(3)+'em)';}
+
+  /* background cream -> dark */
+  tDark=clamp((p-0.04)/0.5,0,1);
+  const bp=document.getElementById('blueprint'); if(bp) bp.style.opacity=(1-clamp(tDark*1.35,0,1)).toFixed(3);
+
+  if(p>0.60){cap.style.opacity=clamp(1-(p-0.60)/0.12,0,1);cap.style.color='rgba(255,255,255,.55)';cap.textContent='fig. 03 \u2014 BRAHAi';}
+  else{cap.style.opacity=clamp(1-p/0.4,0,1);cap.style.color='var(--ink-soft)';cap.textContent='fig. 02 \u2014 open the machine';}
+}
+function raf(){
+  if(first){cScale=tScale;cDy=tDy;cDark=tDark;cFade=tFade;cKrot=tKrot;cKop=tKop;cBloom=tBloom;first=false;}
+  cScale=lerp(cScale,tScale,0.14);
+  cDy=lerp(cDy,tDy,0.14);
+  cDark=lerp(cDark,tDark,0.1);
+  cFade=lerp(cFade,tFade,0.16);
+  cKrot=lerp(cKrot,tKrot,0.16);
+  cKop=lerp(cKop,tKop,0.16);
+  cBloom=lerp(cBloom,tBloom,0.18);
+  laptop.style.transform='translateY('+cDy.toFixed(1)+'px) scale('+cScale.toFixed(3)+')';
+  laptop.style.setProperty('--kbd-rot',cKrot.toFixed(2)+'deg');
+  laptop.style.setProperty('--kbd-op',cKop.toFixed(3));
+  const lid=laptop.querySelector('.lid');
+  lid.style.borderRadius=(16-cFade*16)+'px';
+  lid.style.padding=(12-cFade*12)+'px';
+  lid.style.boxShadow=cFade>0.9?'none':'0 50px 90px -34px rgba(15,10,6,.55)';
+  laptop.querySelector('.glare').style.opacity=(1-cFade*0.85);
+  /* anchor the bloom to the live position of the orange i-dot, then expand from there */
+  const dr=dotEl.getBoundingClientRect(), pr=pinStage.getBoundingClientRect();
+  bloom.style.left=(dr.left+dr.width/2-pr.left).toFixed(1)+'px';
+  bloom.style.top=(dr.top+dr.height/2-pr.top).toFixed(1)+'px';
+  bloom.style.transform='translate(-50%,-50%) scale('+cBloom.toFixed(2)+')';
+  bloom.style.opacity=cBloom>0.02?1:0;
+  pinStage.style.backgroundColor=mix(cDark);
+  const dzTop=darkZone.getBoundingClientRect().top;
+  const darkNow = dzTop < innerHeight*0.5 || cDark>0.55;
+  chrome.style.setProperty('--nav', darkNow?'rgba(242,236,225,.82)':'#6f6757');
+  requestAnimationFrame(raf);
+}
+addEventListener('scroll',compute,{passive:true});
+addEventListener('resize',compute);
+compute();raf();
+</script>
+
+<script>
+/* ---- TWEAKS ---- */
+const TWEAKS = /*EDITMODE-BEGIN*/{
+  "role":"Creative · Builder · App Designer",
+  "accent":"orange",
+  "hero":"serif",
+  "motion":true,
+  "grain":true
+}/*EDITMODE-END*/;
+const ACCENTS={orange:"oklch(0.66 0.155 50)",teal:"oklch(0.70 0.12 205)",gold:"oklch(0.75 0.13 80)",rose:"oklch(0.64 0.13 25)"};
+const tk=Object.assign({},TWEAKS);
+function persist(edits){try{window.parent.postMessage({type:'__edit_mode_set_keys',edits},'*');}catch(e){}}
+function applyTweaks(){
+  document.querySelectorAll('.role-text').forEach(e=>e.textContent=tk.role);
+  document.documentElement.style.setProperty('--orange',ACCENTS[tk.accent]||ACCENTS.orange);
+  document.body.classList.toggle('hero-brutalist',tk.hero==='brutalist');
+  document.body.classList.toggle('no-motion',!tk.motion);
+  const g=document.querySelector('.grain'); if(g) g.style.display=tk.grain?'block':'none';
+  const ri=document.getElementById('tkRole'); if(ri && document.activeElement!==ri) ri.value=tk.role;
+  document.querySelectorAll('#tkAccent .sw').forEach(s=>s.classList.toggle('on',s.dataset.v===tk.accent));
+  document.querySelectorAll('#tkHero button').forEach(b=>b.classList.toggle('on',b.dataset.v===tk.hero));
+  document.getElementById('tkMotion').classList.toggle('on',!!tk.motion);
+  document.getElementById('tkGrain').classList.toggle('on',!!tk.grain);
+}
+function setTweak(k,v){tk[k]=v;applyTweaks();persist({[k]:v});}
+(function(){const wrap=document.getElementById('tkAccent');Object.entries(ACCENTS).forEach(([k,v])=>{const d=document.createElement('div');d.className='sw';d.dataset.v=k;d.style.background=v;d.title=k;d.onclick=()=>setTweak('accent',k);wrap.appendChild(d);});})();
+document.getElementById('tkRole').addEventListener('input',e=>setTweak('role',e.target.value));
+document.querySelectorAll('#tkHero button').forEach(b=>b.onclick=()=>setTweak('hero',b.dataset.v));
+document.getElementById('tkMotion').onclick=()=>setTweak('motion',!tk.motion);
+document.getElementById('tkGrain').onclick=()=>setTweak('grain',!tk.grain);
+const panel=document.getElementById('tweaks');
+window.addEventListener('message',e=>{const t=e.data&&e.data.type;if(t==='__activate_edit_mode')panel.classList.add('open');else if(t==='__deactivate_edit_mode')panel.classList.remove('open');});
+document.getElementById('tkClose').onclick=()=>{panel.classList.remove('open');try{window.parent.postMessage({type:'__edit_mode_dismissed'},'*');}catch(e){}};
+applyTweaks();
+try{window.parent.postMessage({type:'__edit_mode_available'},'*');}catch(e){}
+</script>
+</body>
+</html>
