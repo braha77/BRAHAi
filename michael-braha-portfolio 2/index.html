@@ -415,6 +415,10 @@ function compute(){
   const total=pin.offsetHeight-vh;
   const p=clamp((-r.top)/total,0,1);
 
+  /* keep the laptop GPU-promoted ONLY while the pin is near the viewport —
+     a permanent will-change holds a large composited layer for the whole page */
+  laptop.style.willChange=(r.bottom>-vh && r.top<vh*2)?'transform':'auto';
+
   /* keyboard tilts open early, then folds away as we zoom */
   const op=clamp(p/0.16,0,1);
   tKrot=lerp(86,57,easeOut(op));
@@ -449,6 +453,10 @@ function compute(){
   if(p>0.60){cap.style.opacity=clamp(1-(p-0.60)/0.12,0,1);cap.style.color='rgba(255,255,255,.55)';cap.textContent='fig. 03 \u2014 BRAHAi';}
   else{cap.style.opacity=clamp(1-p/0.4,0,1);cap.style.color='var(--ink-soft)';cap.textContent='fig. 02 \u2014 open the machine';}
 }
+const lidEl=laptop.querySelector('.lid');
+const glareEl=laptop.querySelector('.glare');
+let running=false;
+function wake(){ if(!running){ running=true; requestAnimationFrame(raf); } }
 function raf(){
   if(first){cScale=tScale;cDy=tDy;cDark=tDark;cFade=tFade;cKrot=tKrot;cKop=tKop;cBloom=tBloom;first=false;}
   cScale=lerp(cScale,tScale,0.14);
@@ -461,26 +469,35 @@ function raf(){
   laptop.style.transform='translateY('+cDy.toFixed(1)+'px) scale('+cScale.toFixed(3)+')';
   laptop.style.setProperty('--kbd-rot',cKrot.toFixed(2)+'deg');
   laptop.style.setProperty('--kbd-op',cKop.toFixed(3));
-  const lid=laptop.querySelector('.lid');
-  lid.style.borderRadius=(16-cFade*16)+'px';
-  lid.style.padding=(12-cFade*12)+'px';
-  lid.style.boxShadow=cFade>0.9?'none':'0 50px 90px -34px rgba(15,10,6,.55)';
-  laptop.querySelector('.glare').style.opacity=(1-cFade*0.85);
-  /* anchor the bloom to the live position of the orange i-dot, then expand from there */
-  const dr=dotEl.getBoundingClientRect(), pr=pinStage.getBoundingClientRect();
-  bloom.style.left=(dr.left+dr.width/2-pr.left).toFixed(1)+'px';
-  bloom.style.top=(dr.top+dr.height/2-pr.top).toFixed(1)+'px';
-  bloom.style.transform='translate(-50%,-50%) scale('+cBloom.toFixed(2)+')';
-  bloom.style.opacity=cBloom>0.02?1:0;
+  lidEl.style.borderRadius=(16-cFade*16)+'px';
+  lidEl.style.padding=(12-cFade*12)+'px';
+  lidEl.style.boxShadow=cFade>0.9?'none':'0 50px 90px -34px rgba(15,10,6,.55)';
+  glareEl.style.opacity=(1-cFade*0.85);
+  /* anchor the bloom to the live i-dot — only read layout while it's visible */
+  if(cBloom>0.02||tBloom>0.02){
+    const dr=dotEl.getBoundingClientRect(), pr=pinStage.getBoundingClientRect();
+    bloom.style.left=(dr.left+dr.width/2-pr.left).toFixed(1)+'px';
+    bloom.style.top=(dr.top+dr.height/2-pr.top).toFixed(1)+'px';
+    bloom.style.transform='translate(-50%,-50%) scale('+cBloom.toFixed(2)+')';
+    bloom.style.opacity=cBloom>0.02?1:0;
+  } else if(bloom.style.opacity!=='0'){
+    bloom.style.opacity=0;
+  }
   pinStage.style.backgroundColor=mix(cDark);
   const dzTop=darkZone.getBoundingClientRect().top;
   const darkNow = dzTop < innerHeight*0.5 || cDark>0.55;
   chrome.style.setProperty('--nav', darkNow?'rgba(242,236,225,.82)':'#6f6757');
+  /* sleep once everything has settled — no perpetual forced-layout loop */
+  const rest = Math.abs(cScale-tScale)<0.0008 && Math.abs(cDy-tDy)<0.08 &&
+    Math.abs(cDark-tDark)<0.0015 && Math.abs(cFade-tFade)<0.0015 &&
+    Math.abs(cKrot-tKrot)<0.04 && Math.abs(cKop-tKop)<0.004 &&
+    Math.abs(cBloom-tBloom)<0.008;
+  if(rest){ running=false; return; }
   requestAnimationFrame(raf);
 }
-addEventListener('scroll',compute,{passive:true});
-addEventListener('resize',compute);
-compute();raf();
+addEventListener('scroll',()=>{compute();wake();},{passive:true});
+addEventListener('resize',()=>{compute();wake();});
+compute();wake();
 </script>
 
 <script>

@@ -28,7 +28,11 @@ a{color:inherit;text-decoration:none}
 img,video{display:block;max-width:100%}
 
 /* ---- backgrounds ---- */
-.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+/* NOTE: no mix-blend-mode here — a fixed full-viewport blend layer forces the
+   Chrome/Edge compositor to re-blend the whole screen on every scroll frame,
+   which tanks scroll performance on average (non-Mac) hardware. A plain faint
+   overlay reads almost identically and composites once. */
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.55;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}
 .dark-zone{position:relative;color:var(--light);
   background:
@@ -155,7 +159,7 @@ img,video{display:block;max-width:100%}
 .pin-stage{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center}
 .stage-cap{position:absolute;top:11vh;left:0;right:0;text-align:center;z-index:6;font-family:var(--mono);
   font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--cap,#6f6757);transition:color .3s}
-.laptop{position:relative;width:min(60vw,700px);will-change:transform}
+.laptop{position:relative;width:min(60vw,700px)}
 .lid{position:relative;background:linear-gradient(180deg,#2b2723,#131110);border-radius:16px;padding:12px;
   box-shadow:0 50px 90px -34px rgba(15,10,6,.55),inset 0 0 0 1px rgba(255,255,255,.06)}
 .screen{position:relative;aspect-ratio:16/10.3;border-radius:9px;overflow:hidden;background:#08070a}
