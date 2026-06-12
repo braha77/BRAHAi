@@ -512,8 +512,28 @@ function raf(){
 const _onScroll=()=>{compute();wake();};
 addEventListener('scroll',_onScroll,{passive:true});
 document.addEventListener('scroll',_onScroll,{passive:true});
+document.documentElement.addEventListener('scroll',_onScroll,{passive:true});
 addEventListener('resize',()=>{compute();wake();});
 compute();wake();
+/* debug overlay — remove after diagnosing */
+(function(){
+  const d=document.createElement('div');
+  d.id='dbg';
+  d.style.cssText='position:fixed;bottom:10px;left:10px;z-index:9999;background:rgba(0,0,0,.8);color:#fff;font:11px monospace;padding:6px 10px;border-radius:6px;pointer-events:none;line-height:1.6';
+  document.body.appendChild(d);
+  function upd(){
+    const sY=window.scrollY||document.documentElement.scrollTop||document.body.scrollTop;
+    const rIn=document.querySelectorAll('.reveal.in').length;
+    const rAll=document.querySelectorAll('.reveal').length;
+    d.innerHTML='scrollY: '+Math.round(sY)+'<br>reveals: '+rIn+'/'+rAll+'<br>running: '+running+'<br>vw: '+innerWidth;
+  }
+  ['scroll','touchmove'].forEach(e=>{
+    addEventListener(e,upd,{passive:true});
+    document.addEventListener(e,upd,{passive:true});
+  });
+  setInterval(upd,500);
+  upd();
+})();
 </script>
 
 <script>
