@@ -359,8 +359,12 @@
   }
   addEventListener('scroll',revealVisible,{passive:true});
   document.addEventListener('scroll',revealVisible,{passive:true});
-  /* force-reveal anything already in view after first paint */
+  window.__revealVisible=revealVisible;
+  /* force-reveal anything already in view after first paint — both paths,
+     since rAF can be suspended on some desktop Chrome/Edge setups */
   requestAnimationFrame(()=>requestAnimationFrame(()=>{ revealVisible(); }));
+  setTimeout(revealVisible,120);
+  setTimeout(revealVisible,600);
 })();
 
 /* ---- MacBook keyboard (generated, real QWERTY) ---- */
@@ -468,9 +472,15 @@ function compute(){
 }
 const lidEl=laptop.querySelector('.lid');
 const glareEl=laptop.querySelector('.glare');
-let running=false;
+let running=false,lastFrame=0;
 function wake(){ if(!running){ running=true; requestAnimationFrame(raf); } }
 function raf(){
+  lastFrame=Date.now();
+  if(frame()){ running=false; return; }
+  requestAnimationFrame(raf);
+}
+/* one animation step; returns true once everything has settled */
+function frame(){
   if(first){cScale=tScale;cDy=tDy;cDark=tDark;cFade=tFade;cKrot=tKrot;cKop=tKop;cBloom=tBloom;first=false;}
   cScale=lerp(cScale,tScale,0.14);
   cDy=lerp(cDy,tDy,0.14);
@@ -501,20 +511,41 @@ function raf(){
   const darkNow = dzTop < innerHeight*0.5 || cDark>0.55;
   chrome.style.setProperty('--nav', darkNow?'rgba(242,236,225,.82)':'#6f6757');
   /* sleep once everything has settled — no perpetual forced-layout loop */
-  const rest = Math.abs(cScale-tScale)<0.0008 && Math.abs(cDy-tDy)<0.08 &&
+  return Math.abs(cScale-tScale)<0.0008 && Math.abs(cDy-tDy)<0.08 &&
     Math.abs(cDark-tDark)<0.0015 && Math.abs(cFade-tFade)<0.0015 &&
     Math.abs(cKrot-tKrot)<0.04 && Math.abs(cKop-tKop)<0.004 &&
     Math.abs(cBloom-tBloom)<0.008;
-  if(rest){ running=false; return; }
-  requestAnimationFrame(raf);
 }
 /* Chrome: body{overflow-x:hidden} can shift scroll container off window */
 const _onScroll=()=>{compute();wake();};
 addEventListener('scroll',_onScroll,{passive:true});
 document.addEventListener('scroll',_onScroll,{passive:true});
-document.documentElement.addEventListener('scroll',_onScroll,{passive:true});
 addEventListener('resize',()=>{compute();wake();});
 compute();wake();
+
+/* Watchdog: some desktop Chrome/Edge setups suspend requestAnimationFrame
+   and/or never deliver scroll events for this page, which kills every
+   animation on the site. This timer (setInterval is NOT throttled the same
+   way) polls the scroll position — a cheap read, no forced layout — and
+   drives reveals + the laptop animation directly. If rAF is alive it stays
+   idle; if rAF is dead it steps the animation itself. */
+(function(){
+  const se=()=>document.scrollingElement||document.documentElement;
+  let last=-1;
+  setInterval(function(){
+    const y=se().scrollTop;
+    if(y!==last){
+      last=y;
+      compute();wake();
+      if(window.__revealVisible)window.__revealVisible();
+    }
+    /* rAF starved (no frame in 250ms while animating) → step manually */
+    if(running && Date.now()-lastFrame>250){
+      if(frame()) running=false;
+    }
+  },80);
+})();
+
 /* debug overlay — remove after diagnosing */
 (function(){
   const d=document.createElement('div');
@@ -522,16 +553,12 @@ compute();wake();
   d.style.cssText='position:fixed;bottom:10px;left:10px;z-index:9999;background:rgba(0,0,0,.8);color:#fff;font:11px monospace;padding:6px 10px;border-radius:6px;pointer-events:none;line-height:1.6';
   document.body.appendChild(d);
   function upd(){
-    const sY=window.scrollY||document.documentElement.scrollTop||document.body.scrollTop;
+    const sY=(document.scrollingElement||document.documentElement).scrollTop;
     const rIn=document.querySelectorAll('.reveal.in').length;
     const rAll=document.querySelectorAll('.reveal').length;
-    d.innerHTML='scrollY: '+Math.round(sY)+'<br>reveals: '+rIn+'/'+rAll+'<br>running: '+running+'<br>vw: '+innerWidth;
+    d.innerHTML='v3 · scrollY: '+Math.round(sY)+'<br>reveals: '+rIn+'/'+rAll+'<br>running: '+running+'<br>vw: '+innerWidth;
   }
-  ['scroll','touchmove'].forEach(e=>{
-    addEventListener(e,upd,{passive:true});
-    document.addEventListener(e,upd,{passive:true});
-  });
-  setInterval(upd,500);
+  setInterval(upd,300);
   upd();
 })();
 </script>
