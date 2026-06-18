@@ -34,7 +34,7 @@ img,video{display:block;max-width:100%}
    overlay reads almost identically and composites once. */
 .grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.55;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}
-.dark-zone{position:relative;z-index:1;color:var(--light);
+.dark-zone{position:relative;z-index:1;transform:translateZ(0);color:var(--light);
   background:
   radial-gradient(1100px 820px at 12% -3%,#1a1c25,transparent 70%),
   radial-gradient(1000px 760px at 93% 6%,#18201f,transparent 70%),
